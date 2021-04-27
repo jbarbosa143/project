@@ -1,6 +1,9 @@
 *{
     margin: center;
-    outline: solid white 1px;
+    /* outline: solid white 1px; */
+}
+li{
+    list-style-type: circle;
 }
 .container{
     display: flex;
@@ -32,7 +35,7 @@
 
 .lef h2{
     display: flex;
-    text-align: center;
+    margin-left: 150px;
     height: 20%;
     width: 50%;
     color: aliceblue;
@@ -40,6 +43,10 @@
 .lef input{
     height:20%;
     width: 60%;
+    background-color: transparent;
+    color: rgb(76, 86, 148);
+    font-size: 24px;
+    text-align: center;
 }
 
 .lef button{
@@ -61,6 +68,7 @@
 }
 .righ h2{
     display: flex;
+    margin-left: 150px;
     height: 20%;
     width: 50%;
     color: aliceblue;
@@ -68,6 +76,10 @@
 .righ input{
     height:20%;
     width: 60%;
+    background-color: transparent;
+    color: rgb(76, 86, 148);
+    font-size: 24px;
+    text-align: center;
 }
 
 .righ button{
@@ -88,18 +100,66 @@
 
 .left{
     display: flex;
+    flex-direction: column;
     height: 100%;
     width: 25%;
 }
 
 .center{
     display: flex;
+    flex-direction: column;
     height: 100%;
     width:50%
 }
 
+.top-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+}
+
+.top-main input{
+    display: flex;
+    background-color: transparent;
+    color: rgb(239, 224, 20);
+    font-size: 24px;
+    text-align: center;
+    width: 50%;
+}
+
+.top-main button{
+    background-color: transparent;
+    width:50%;
+    color: rgb(239, 224, 20);
+    font-size: 24px;
+}
+
+.bot-main{
+    display: flex;
+    flex-direction: column;
+    height:75%;
+    width:100%;
+    color: rgb(239, 224, 20);
+    text-align: center;
+}
+
+.rocketGuide{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 50%;
+    width: 100%;
+    color: rgb(239, 224, 20);
+    font-size: 18px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
 .right{
     display: flex;
+    flex-direction: column;
     height: 100%;
     width: 25%;
 }

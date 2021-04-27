@@ -13,16 +13,15 @@ pSub.addEventListener('click', function(){
     .then((json) =>{
         const displayLeft = document.querySelector('.left')
 
-        
-        
-        console.log(json.sprites.front_default)
+        console.log(json)
 
         fetch(`${json.types[0].type.url}`)
 
         .then((res)=> res.json())
 
         .then((dmg)=>{
-            console.log(dmg.damage_relations.double_damage_to[0])
+            console.log(dmg)
+            // console.log(dmg.damage_relations.double_damage_to[0].name)
             let leftHtml = `<div class="leftPokemon">
             <h1>Name : ${json.name} </h1>
             <img src="${json.sprites.front_default}" alt=""></img>
@@ -32,6 +31,7 @@ pSub.addEventListener('click', function(){
             
         </div>`
         displayLeft.innerHTML += leftHtml;
+        
         })
     })
 })
@@ -59,7 +59,8 @@ ePSub.addEventListener('click', function(){
         .then((res)=> res.json())
 
         .then((dmg)=>{
-            console.log(dmg.damage_relations.double_damage_to[0])
+            console.log(dmg)
+            // console.log(dmg.damage_relations.double_damage_to[0].name)
             let rightHtml = `<div class="rightPokemon">
             <h1>Name : ${json.name} </h1>
             <img src="${json.sprites.front_default}" alt=""></img>
@@ -68,7 +69,7 @@ ePSub.addEventListener('click', function(){
             <h2>Strong Against : ${dmg.damage_relations.double_damage_to[0].name} </h2>
             
         </div>`
-        displayRight.innerHTML += rightHtml;
+        displayRight.innerHTML = rightHtml;
         })
     })
 })
