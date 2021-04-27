@@ -3,7 +3,7 @@ const uKey = document.querySelector('.key');
 const pSub = document.querySelector(".uPSub");
 
 pSub.addEventListener('click', function(){
-    console.log('i was clicked')
+    // console.log('i was clicked')
     const URL = ` https://pokeapi.co/api/v2/pokemon/${playerPokemon.value}`
     
     fetch(URL)
@@ -13,14 +13,14 @@ pSub.addEventListener('click', function(){
     .then((json) =>{
         const displayLeft = document.querySelector('.left')
 
-        console.log(json)
+        // console.log(json)
 
         fetch(`${json.types[0].type.url}`)
 
         .then((res)=> res.json())
 
         .then((dmg)=>{
-            console.log(dmg)
+            // console.log(dmg)
             // console.log(dmg.damage_relations.double_damage_to[0].name)
             let leftHtml = `<div class="leftPokemon">
             <h1>Name : ${json.name} </h1>
@@ -42,7 +42,7 @@ const ePSub = document.querySelector('.ePSub');
 
 
 ePSub.addEventListener('click', function(){
-    console.log('i was clicked')
+    // console.log('i was clicked')
     const URL = ` https://pokeapi.co/api/v2/pokemon/${ePokemon.value}`
     
     fetch(URL)
@@ -52,14 +52,14 @@ ePSub.addEventListener('click', function(){
     .then((json) =>{
         const displayRight = document.querySelector('.right')
 
-        console.log(json)
+        // console.log(json)
         
         fetch(`${json.types[0].type.url}`)
 
         .then((res)=> res.json())
 
         .then((dmg)=>{
-            console.log(dmg)
+            // console.log(dmg)
             // console.log(dmg.damage_relations.double_damage_to[0].name)
             let rightHtml = `<div class="rightPokemon">
             <h1>Name : ${json.name} </h1>
@@ -72,4 +72,33 @@ ePSub.addEventListener('click', function(){
         displayRight.innerHTML = rightHtml;
         })
     })
+})
+
+// =======Center=================================
+const apiSub = document.querySelector('.keySub');
+const key = document.querySelector('.apiKey');
+const pokem = document.querySelector('.pokem');
+let pokeId = 0;
+
+apiSub.addEventListener('click', function(){
+console.log('CLick ME HARD! DADDY UWU')
+
+const poGoURL = `https://pokemon-go1.p.rapidapi.com/pokemon_types.json?rapidapi-key=${key.value}`;
+console.log(pokem.value)
+const encodedPoGo = encodeURI(poGoURL)
+fetch(encodedPoGo)
+
+.then((res)=> res.json())
+
+.then((poGo)=>{
+    
+    
+    for(const pokemon of poGo){
+        if(pokem.value === pokemon.pokemon_name){
+            pokeId = pokemon.pokemon_id
+            console.log('Id is :',pokeId)
+        }
+        
+    }
+})
 })
