@@ -7,18 +7,18 @@ pSub.addEventListener('click', function(){
     const URL = ` https://pokeapi.co/api/v2/pokemon/${playerPokemon.value}`
     
     fetch(URL)
-
+    
     .then((res) => res.json())
-
+    
     .then((json) =>{
         const displayLeft = document.querySelector('.left')
-
+        
         // console.log(json)
-
+        
         fetch(`${json.types[0].type.url}`)
-
+        
         .then((res)=> res.json())
-
+        
         .then((dmg)=>{
             // console.log(dmg)
             // console.log(dmg.damage_relations.double_damage_to[0].name)
@@ -29,9 +29,9 @@ pSub.addEventListener('click', function(){
             <h2>Weak Against : ${dmg.damage_relations.double_damage_from[0].name}</h2>
             <h2>Strong Against : ${dmg.damage_relations.double_damage_to[0].name} </h2>
             
-        </div>`
-        displayLeft.innerHTML += leftHtml;
-        
+            </div>`
+            displayLeft.innerHTML += leftHtml;
+            
         })
     })
 })
@@ -46,18 +46,18 @@ ePSub.addEventListener('click', function(){
     const URL = ` https://pokeapi.co/api/v2/pokemon/${ePokemon.value}`
     
     fetch(URL)
-
+    
     .then((res) => res.json())
-
+    
     .then((json) =>{
         const displayRight = document.querySelector('.right')
-
+        
         // console.log(json)
         
         fetch(`${json.types[0].type.url}`)
-
+        
         .then((res)=> res.json())
-
+        
         .then((dmg)=>{
             // console.log(dmg)
             // console.log(dmg.damage_relations.double_damage_to[0].name)
@@ -68,8 +68,8 @@ ePSub.addEventListener('click', function(){
             <h2>Weak Against : ${dmg.damage_relations.double_damage_from[0].name}</h2>
             <h2>Strong Against : ${dmg.damage_relations.double_damage_to[0].name} </h2>
             
-        </div>`
-        displayRight.innerHTML = rightHtml;
+            </div>`
+            displayRight.innerHTML = rightHtml;
         })
     })
 })
@@ -79,26 +79,77 @@ const apiSub = document.querySelector('.keySub');
 const key = document.querySelector('.apiKey');
 const pokem = document.querySelector('.pokem');
 let pokeId = 0;
+let normArr = [];
+let randArr=[];
+let normMoves =[];
+let ranMoves = [];
+let normalMove = [];
+let chargedMove = [];
+let reqCandy = 0;
+let evoInto = "";
 
 apiSub.addEventListener('click', function(){
-console.log('CLick ME HARD! DADDY UWU')
-
-const poGoURL = `https://pokemon-go1.p.rapidapi.com/pokemon_types.json?rapidapi-key=${key.value}`;
-console.log(pokem.value)
-const encodedPoGo = encodeURI(poGoURL)
-fetch(encodedPoGo)
-
-.then((res)=> res.json())
-
-.then((poGo)=>{
+    const evoURL =  `https://pokemon-go1.p.rapidapi.com/pokemon_evolutions.json?rapidapi-key=${key.value}`;
+    const evoEncoded = encodeURI(evoURL);
     
+    fetch(evoEncoded)
     
-    for(const pokemon of poGo){
-        if(pokem.value === pokemon.pokemon_name){
-            pokeId = pokemon.pokemon_id
-            console.log('Id is :',pokeId)
+    .then((res) => res.json())
+    
+    .then((evo) =>{
+        // console.log(evo)
+        for(const stage of evo){
+            for(let i = 0; i < stage.evolutions.length; i ++){
+                if(stage.evolutions[i].form === "Normal"){
+                    normArr.push(stage.evolutions[i])
+                }
+                else{
+                    randArr.push(stage.evolutions[i])
+                }
+            }
         }
-        
+        normalTypePokemonMovesArr();
+        candyToEvolve();
+    })
+})
+
+function normalTypePokemonMovesArr(){
+    const pokeMovesURL = `https://pokemon-go1.p.rapidapi.com/current_pokemon_moves.json?rapidapi-key=${key.value}`;
+    const movesEncoded = encodeURI(pokeMovesURL)
+    
+    
+    fetch(movesEncoded)
+    
+    .then((res) => res.json())
+    
+    .then((moves)=>{
+        // for(const move of moves){
+        for(const move of Object.values(moves)){
+            if(move.form === "Normal"){
+                normMoves.push(move)
+            }
+            else{
+                ranMoves.push(move)
+            }
+            // console.log(normMoves)
+        }
+        for(const move of normMoves){
+            if(pokem.value === move.pokemon_name){
+                normalMove = move.fast_moves;
+                chargedMove = move.charged_moves;
+            }
+            // console.log(move)
+        }
+        console.log('Normal Move',normalMove,'charged Move',chargedMove)
+    })
+}
+
+function candyToEvolve(){
+    for(const norm of normArr){
+        if(pokem.value ===norm.pokemon_name){
+            reqCandy = norm
+        } 
+        console.log(norm.pokemon_name)
     }
-})
-})
+    console.log(reqCandy)
+}
