@@ -1,12 +1,17 @@
 const playerPokemon = document.querySelector('.userPoke');
 const uKey = document.querySelector('.key');
 const pSub = document.querySelector(".uPSub");
-const themeSong = new Audio('/sounds/Pokemon-Theme-Song.mp3');
+const themeSong = new Audio('sounds/Pokemon-Theme-Song.mp3');
+const pika = new Audio('sounds/19.mp3');
+
+
 
 pSub.addEventListener('click', function(){
     // console.log('i was clicked')
     const URL = ` https://pokeapi.co/api/v2/pokemon/${playerPokemon.value}`
     
+    pika.play();
+
     fetch(URL)
     
     .then((res) => res.json())
@@ -45,6 +50,8 @@ const ePSub = document.querySelector('.ePSub');
 ePSub.addEventListener('click', function(){
     // console.log('i was clicked')
     const URL = ` https://pokeapi.co/api/v2/pokemon/${ePokemon.value}`
+
+    pika.play();
     
     fetch(URL)
     
