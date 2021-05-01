@@ -29,13 +29,25 @@ li{
     width:100%;
 }
 
+.cent{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width:15%;
+    
+}
+
+audio{
+    background-color: transparent;
+}
+
 .lef{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width:50%;
+    width:42%;
 }
 
 .lef h2{
@@ -69,11 +81,11 @@ li{
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 50%;
+    width: 42%;
 }
 .righ h2{
     display: flex;
-    margin-left: 150px;
+    margin-left: 80px;
     height: 20%;
     width: 50%;
     color: aliceblue;
