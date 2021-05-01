@@ -2,8 +2,13 @@
     margin: center;
     /* outline: solid white 1px; */
 }
+
 li{
     list-style-type: circle;
+}
+
+::placeholder{
+    color: rgb(252 2 4);
 }
 .container{
     display: flex;
@@ -123,7 +128,7 @@ li{
 .top-main input{
     display: flex;
     background-color: transparent;
-    color: rgb(239, 224, 20);
+    color: rgb(252 2 4);
     font-size: 24px;
     text-align: center;
     width: 50%;
@@ -132,7 +137,7 @@ li{
 .top-main button{
     background-color: transparent;
     width:50%;
-    color: rgb(239, 224, 20);
+    color: rgb(252 2 4);
     font-size: 24px;
 }
 
@@ -168,6 +173,15 @@ li{
     margin-top: 35px;
 }
 
+#pokemonName{
+    font-weight: bold;
+    font-size: 22px;;
+}
+
+#att{
+    font-weight: bold;
+    font-size: 22px;
+}
 
 .rocketGuide{
     display: flex;

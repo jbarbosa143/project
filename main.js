@@ -1,6 +1,7 @@
 const playerPokemon = document.querySelector('.userPoke');
 const uKey = document.querySelector('.key');
 const pSub = document.querySelector(".uPSub");
+const themeSong = new Audio('/sounds/Pokemon-Theme-Song.mp3');
 
 pSub.addEventListener('click', function(){
     // console.log('i was clicked')
@@ -22,15 +23,15 @@ pSub.addEventListener('click', function(){
         .then((dmg)=>{
             // console.log(dmg)
             // console.log(dmg.damage_relations.double_damage_to[0].name)
-            let leftHtml = `<div class="leftPokemon">
-            <h1>Name : ${json.name} </h1>
-            <img src="${json.sprites.front_default}" alt=""></img>
-            <h2>Type : ${json.types[0].type.name}</h2>
-            <h2>Weak Against : ${dmg.damage_relations.double_damage_from[0].name}</h2>
-            <h2>Strong Against : ${dmg.damage_relations.double_damage_to[0].name} </h2>
+            // let leftHtml = `<div class="leftPokemon">
+            // <h1>Name : ${json.name} </h1>
+            // <img src="${json.sprites.front_default}" alt=""></img>
+            // <h2>Type : ${json.types[0].type.name}</h2>
+            // <h2>Weak Against : ${dmg.damage_relations.double_damage_from[0].name}</h2>
+            // <h2>Strong Against : ${dmg.damage_relations.double_damage_to[0].name} </h2>
             
-            </div>`
-            displayLeft.innerHTML += leftHtml;
+            // </div>`
+            // displayLeft.innerHTML += leftHtml;
             
         })
     })
@@ -78,6 +79,7 @@ ePSub.addEventListener('click', function(){
 const apiSub = document.querySelector('.keySub');
 const key = document.querySelector('.apiKey');
 const pokem = document.querySelector('.pokem');
+const info = document.querySelector('.addinfo');
 let pokeId = 0;
 let normArr = [];
 let randArr=[];
@@ -107,11 +109,34 @@ apiSub.addEventListener('click', function(){
                     randArr.push(stage.evolutions[i])
                 }
             }
+            
         }
         normalTypePokemonMovesArr();
         candyToEvolve();
+        console.log('Normal M',normalMove,'Charge M',chargedMove)
+        let moveHTML = `<div class="moves">
+        <h3>Pokemons Avalible Attacks</h3>
+        <ul>
+        
+        <ol><span id="att">Fast Attacks</span></li>
+        <br>
+        <li>${normalMove}</li>
+        <br>
+        <ol><span id="att">Charged Attacks</span></li>
+        <br>
+        <li>${chargedMove}</li>
+        <br>
+        </ul>
+        </div>
+        <div class="candys">
+        <h3>Required Candies To Evolve <span id="pokemonName"></span></h3>
+        <h3 id="howMany">${reqCandy}</h3>
+        </div>`
+        info.innerHTML += moveHTML;
+        console.log('Normal M',normalMove,'Charge M',chargedMove)
     })
 })
+
 
 function normalTypePokemonMovesArr(){
     const pokeMovesURL = `https://pokemon-go1.p.rapidapi.com/current_pokemon_moves.json?rapidapi-key=${key.value}`;
@@ -143,13 +168,17 @@ function normalTypePokemonMovesArr(){
         console.log('Normal Move',normalMove,'charged Move',chargedMove)
     })
 }
+normalTypePokemonMovesArr();
 
 function candyToEvolve(){
     for(const norm of normArr){
-        if(pokem.value ===norm.pokemon_name){
-            reqCandy = norm
+        // console.log(normArr)
+        if(pokem.value === norm.pokemon_name){
+            reqCandy = norm.candy_required;
+            // evolveForm = norm.pokemon_name;
         } 
-        console.log(norm.pokemon_name)
+        // console.log(norm)
     }
     console.log(reqCandy)
 }
+candyToEvolve();
