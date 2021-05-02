@@ -173,25 +173,26 @@ audio{
     height:95%;
 }
 
-.candys{
+/* .candys{
     height:90%;
     width:50%;
     margin-top: 35px;
     padding: 0px;
-}
+} */
 
 .moves{
     height:90%;
-    width:50%;
+    width:100%;
     margin-top: 35px;
-    font-size: 16px;
+    font-size: 26px;
     font-weight: bold;
     padding: 0px;
 }
 
 .moves li{
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
+    color: aliceblue;
 }
 
 #pokemonName{
@@ -201,7 +202,7 @@ audio{
 
 #att{
     font-weight: bold;
-    font-size: 22px;
+    font-size: 28px;
 }
 
 .rocketGuide{

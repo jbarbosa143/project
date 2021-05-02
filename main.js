@@ -135,6 +135,8 @@ function normalTypePokemonMovesArr(){
         <br>
         </ul>
         </div>`
+        
+        info.innerHTML = movesHTML
         console.log('Normal Move',normalMove,'charged Move',chargedMove)
     })
 }
@@ -164,12 +166,12 @@ apiSub.addEventListener('click', function(){
         candyToEvolve();
         
         console.log('Normal M',normalMove,'Charge M',chargedMove)
-        let candyHtml = 
-        `<div class="candys">
-        <h3> Candies Required To Evolve </h3>
-        <h3 id="howMany">${reqCandy}</h3>
-        </div>`
-        info.innerHTML = movesHTML + candyHtml;
+        // let candyHtml = 
+        // `<div class="candys">
+        // <h3> Candies Required To Evolve </h3>
+        // <h3 id="howMany">${reqCandy}</h3>
+        // </div>`
+        // info.innerHTML =  candyHtml;
     })
 })
 
