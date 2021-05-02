@@ -1,6 +1,6 @@
 *{
     margin: center;
-    /* outline: solid white 1px; */
+    outline: solid white 1px;
 }
 
 li{
@@ -177,6 +177,7 @@ audio{
     height:90%;
     width:50%;
     margin-top: 35px;
+    padding: 0px;
 }
 
 .moves{
@@ -185,6 +186,7 @@ audio{
     margin-top: 35px;
     font-size: 16px;
     font-weight: bold;
+    padding: 0px;
 }
 
 .moves li{
@@ -241,3 +243,42 @@ audio{
 }
 
 
+@media screen and (max-width: 800px){
+    .container{
+        height:auto;
+        width: auto;
+        flex-direction: column;
+    }
+
+    .top{
+        flex-direction: row;
+        height:20%;
+        width: 100%;
+    }
+
+    .cent{
+        align-items: center;
+        height: 100%;
+        width: 15%;
+    }
+
+    .lef{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 42%;
+    }
+
+    .lef h2{
+        margin-left: 5%;
+        height: 20%;
+        width: 50%;
+    }
+
+    .lef input{
+        height: 20%;
+        width: 60%;
+    }
+
+}
