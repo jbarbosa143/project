@@ -32,7 +32,7 @@ pSub.addEventListener('click', function(){
             <h2>Strong Against : ${dmg.damage_relations.double_damage_to[0].name} </h2>
             
             </div>`
-            displayLeft.innerHTML = leftHtml;
+            displayLeft.innerHTML += leftHtml;
             
         })
     })
@@ -78,6 +78,7 @@ ePSub.addEventListener('click', function(){
     })
 })
 
+
 // =======Center=================================
 const apiSub = document.querySelector('.keySub');
 const key = document.querySelector('.apiKey');
@@ -88,8 +89,8 @@ let normArr = [];
 let randArr=[];
 let normMoves =[];
 let ranMoves = [];
-let normalMove = [];
-let chargedMove = [];
+let normalMove = "";
+let chargedMove = "";
 let reqCandy = 0;
 let evoInto = "";
 let movesHTML = "";
@@ -124,11 +125,11 @@ function normalTypePokemonMovesArr(){
         movesHTML = `<div class="moves">
         <h3>Pokemons Avalible Attacks</h3>
         <ul>
-        <ol><span id="att">Fast Attacks</span></li>
+        <ol><span id="att">Fast Attacks</span></ol>
         <br>
         <li id="ATT">${normalMove}</li>
         <br>
-        <ol><span id="att">Charged Attacks</span></li>
+        <ol><span id="att">Charged Attacks</span></ol>
         <br>
         <li id="ATT">${chargedMove}</li>
         <br>
