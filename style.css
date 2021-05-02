@@ -249,6 +249,7 @@ audio{
         width: auto;
         flex-direction: column;
         flex-wrap: wrap;
+        font-size: auto;
     }
 
     /* .top{
@@ -258,7 +259,6 @@ audio{
     }
 
     .cent{
-        align-items: center;
         height: 100%;
         width: 15%;
     }
