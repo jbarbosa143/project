@@ -118,7 +118,7 @@ audio{
 .left{
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 67%;
     width: 25%;
 }
 
@@ -219,7 +219,7 @@ audio{
 .right{
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 67%;
     width: 25%;
 }
 /* middle section input------------------- */
@@ -248,9 +248,10 @@ audio{
         height:auto;
         width: auto;
         flex-direction: column;
+        flex-wrap: wrap;
     }
 
-    .top{
+    /* .top{
         flex-direction: row;
         height:20%;
         width: 100%;
@@ -279,6 +280,6 @@ audio{
     .lef input{
         height: 20%;
         width: 60%;
-    }
+    } */
 
 }
