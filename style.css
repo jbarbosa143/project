@@ -250,6 +250,7 @@ audio{
         flex-direction: column;
         flex-wrap: wrap;
         font-size: auto;
+        margin:auto;
     }
 
     /* .top{
